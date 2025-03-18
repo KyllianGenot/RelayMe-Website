@@ -13,7 +13,7 @@ function App() {
       <Hero id="accueil" />
       <Features id="fonctionnalites" />
       <CTA id="telechargements" />
-      <Footer id="contact" />
+      <Footer />
     </div>
   );
 }
