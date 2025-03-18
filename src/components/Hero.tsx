@@ -1,10 +1,29 @@
+import { useEffect, useRef } from 'react';
 import StoreButtons from './StoreButtons';
+import lottie from 'lottie-web';
+import animationData from '../assets/Animation.json';
 
 interface HeroProps {
   id?: string;
 }
 
 export default function Hero({ id }: HeroProps) {
+  const animationContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (animationContainer.current) {
+      const anim = lottie.loadAnimation({
+        container: animationContainer.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+      });
+
+      return () => anim.destroy();
+    }
+  }, []);
+
   return (
     <section id={id} className="min-h-[110vh] flex items-center py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,10 +48,10 @@ export default function Hero({ id }: HeroProps) {
           
           <div className="relative mt-10 lg:mt-0">
             <div className="relative z-10 floating">
-              <img
-                src="/screenshot.png"
-                alt="RelayMe App Interface"
-                className="w-full max-w-lg mx-auto rounded-xl shadow-lg"
+              <div
+                ref={animationContainer}
+                style={{ maxWidth: '500px', width: '100%', height: 'auto' }}
+                className="mx-auto"
               />
             </div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#3F8DF3]/10 blur-3xl -z-10"></div>
