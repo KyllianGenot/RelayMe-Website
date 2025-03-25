@@ -7,25 +7,29 @@ interface FeaturesProps {
 const features = [
   {
     icon: Plus,
-    title: "Ajouter des contacts",
-    description: "Ajoutez vos contacts professionnels avec leurs métiers et entreprises en toute simplicité.",
-    image: "../assets/image/add-contact.png"
+    title: "Ajout de contacts professionnels",
+    description: "Enregistrez vos contacts professionnels en spécifiant leur métier et en les classant dans des catégories personnalisées, en plus des informations habituelles.",
+    image: "/ajout.webp"
   },
   {
     icon: Check,
-    title: "Demander une autorisation",
-    description: "Protégez la confidentialité en obtenant l'accord avant tout partage de contact.",
-    image: "../assets/image/request-permission.png"
+    title: "Tri par catégorie",
+    description: "Accédez facilement à vos contacts professionnels grâce à un tri par catégories personnalisées, pour une organisation optimale de votre réseau.",
+    video: "/tri.mp4",
+    frame: "/cadre.webp" // Ajout du cadre pour la vidéo
   },
   {
     icon: Share2,
-    title: "Partager facilement",
-    description: "Partagez instantanément via SMS ou WhatsApp avec une interface intuitive.",
-    image: "../assets/image/share-contact.png"
+    title: "Partage simplifié de contacts",
+    description: "Partagez vos contacts en un clic grâce à un message pré-enregistré personnalisé, sans perte de temps en rédaction.",
+    image: "/autorisation.webp"
   }
 ];
 
 export default function Features({ id }: FeaturesProps) {
+  // Épaisseur estimée de la bordure (à ajuster si nécessaire)
+  const borderThickness = 10; // en pixels
+
   return (
     <section id={id} className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,13 +44,39 @@ export default function Features({ id }: FeaturesProps) {
               className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-16`}
             >
               <div className="w-full lg:w-1/2">
-                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(63,141,243,0.15)]">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#3F8DF3]/20 to-transparent" />
+                <div className="relative w-full max-w-[250px] mx-auto" style={{ aspectRatio: '443 / 898' }}>
+                  {feature.video ? (
+                    <div className="relative w-full h-full">
+                      {/* Vidéo ajustée avec marges pour éviter la bordure */}
+                      <video
+                        src={feature.video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute top-[8px] left-[8px] w-[calc(100%-16px)] h-[calc(100%-16px)] object-fill rounded-[40px] shadow-[0_0_60px_rgba(63,141,243,0.15)]"
+                      />
+                      {/* Cadre superposé */}
+                      <img
+                        src={feature.frame}
+                        alt="Cadre de téléphone"
+                        className="absolute top-0 left-0 w-full h-full object-contain pointer-events-none"
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-[#3F8DF3]/20 to-transparent rounded-[60px]" />
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-full">
+                      {/* Affichage direct de l'image avec cadre inclus */}
+                      <img
+                        src={feature.image}
+                        alt={feature.title}
+                        className="absolute top-0 left-0 w-full h-full object-cover rounded-[40px] shadow-[0_0_60px_rgba(63,141,243,0.15)]"
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-[#3F8DF3]/20 to-transparent rounded-[60px]" />
+                    </div>
+                  )}
                 </div>
               </div>
               
