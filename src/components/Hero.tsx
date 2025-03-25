@@ -38,7 +38,7 @@ export default function Hero({ id }: HeroProps) {
             </div>
             
             <p className="text-[#73777B] text-lg max-w-lg">
-              RelayMe révolutionne le partage de contacts professionnels avec confidentialité et simplicité.
+              RelayMe révolutionne la gestion et le partage de contacts professionnels en un endroit avec simplicité.
             </p>
             
             <div className="pt-2">
