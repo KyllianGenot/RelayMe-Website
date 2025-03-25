@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Download, Menu, X } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../assets/images/logo.webp';
 
 export default function EnTete() {
   const [estVisible, setEstVisible] = useState(true);
   const [dernierScrollY, setDernierScrollY] = useState(0);
   const [menuMobileOuvert, setMenuMobileOuvert] = useState(false);
   const [afficherBrillanceBouton, setAfficherBrillanceBouton] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     const gererDefilement = () => {
@@ -41,7 +42,7 @@ export default function EnTete() {
 
   const handleNavigation = (id: string) => {
     if (window.location.pathname !== '/') {
-      navigate('/', { replace: true }); // Navigate to home page
+      navigate('/', { replace: true });
       setTimeout(() => {
         const target = document.querySelector(`#${id}`);
         if (target) {
@@ -49,7 +50,7 @@ export default function EnTete() {
           const offsetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight;
           window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         }
-      }, 0); // Slight delay to allow route change
+      }, 0);
     } else {
       const target = document.querySelector(`#${id}`);
       if (target) {
@@ -70,10 +71,13 @@ export default function EnTete() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <span className="text-2xl font-bold">
-              <span className="gradient-text">R</span>
-              <span className="text-white">elayMe</span>
-            </span>
+            <Link to="/" className="flex items-center">
+              <img 
+                src={Logo} 
+                alt="Logo" 
+                className="h-8 w-auto"
+              />
+            </Link>
           </div>
 
           {/* Navigation pour ordinateur */}
@@ -84,7 +88,7 @@ export default function EnTete() {
                 to="/"
                 className="nav-link"
                 onClick={(e) => {
-                  e.preventDefault(); // Prevent default Link behavior
+                  e.preventDefault();
                   handleNavigation(element.id);
                 }}
               >
@@ -129,7 +133,7 @@ export default function EnTete() {
                 to="/"
                 className="mobile-nav-link block"
                 onClick={(e) => {
-                  e.preventDefault(); // Prevent default Link behavior
+                  e.preventDefault();
                   handleNavigation(element.id);
                   setMenuMobileOuvert(false);
                 }}
