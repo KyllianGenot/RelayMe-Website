@@ -47,6 +47,8 @@ export default function Features({ id }: FeaturesProps) {
                 <div className="relative w-full max-w-[250px] mx-auto" style={{ aspectRatio: '443 / 898' }}>
                   {feature.video ? (
                     <div className="relative w-full h-full">
+                      {/* Gradient overlay placé en dessous */}
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-[#3F8DF3]/20 to-transparent rounded-[60px]" />
                       {/* Vidéo ajustée avec marges pour éviter la bordure */}
                       <video
                         src={feature.video}
@@ -62,19 +64,17 @@ export default function Features({ id }: FeaturesProps) {
                         alt="Cadre de téléphone"
                         className="absolute top-0 left-0 w-full h-full object-contain pointer-events-none"
                       />
-                      {/* Gradient overlay */}
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-[#3F8DF3]/20 to-transparent rounded-[60px]" />
                     </div>
                   ) : (
                     <div className="relative w-full h-full">
+                      {/* Gradient overlay placé en dessous */}
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-[#3F8DF3]/20 to-transparent rounded-[60px]" />
                       {/* Affichage direct de l'image avec cadre inclus */}
                       <img
                         src={feature.image}
                         alt={feature.title}
                         className="absolute top-0 left-0 w-full h-full object-cover rounded-[40px] shadow-[0_0_60px_rgba(63,141,243,0.15)]"
                       />
-                      {/* Gradient overlay */}
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-[#3F8DF3]/20 to-transparent rounded-[60px]" />
                     </div>
                   )}
                 </div>

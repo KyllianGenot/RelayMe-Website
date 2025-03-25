@@ -56,7 +56,7 @@ export default function Footer({}: FooterProps) {
           {/* Lien LinkedIn (à droite) */}
           <div className="flex justify-center md:justify-end items-center">
             <a
-              href="https://www.linkedin.com/company/relayme"
+              href="https://www.linkedin.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#73777B] hover:text-[#3F8DF3] transition-colors duration-200"
