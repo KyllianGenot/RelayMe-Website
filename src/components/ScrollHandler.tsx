@@ -7,7 +7,7 @@ const ScrollHandler = () => {
       if (anchor.tagName === 'A' && anchor.getAttribute('href')?.startsWith('#')) {
         e.preventDefault();
         const href = anchor.getAttribute('href');
-        console.log('Anchor clicked:', href); // Ajout d'un log pour vérification
+        console.log('Anchor clicked:', href); // Log pour vérification
         if (href && href !== '#') {
           const target = document.querySelector(href);
           if (target) {
@@ -18,10 +18,12 @@ const ScrollHandler = () => {
               behavior: 'smooth',
             });
 
-            // Mettre à jour l'URL après le défilement
-            setTimeout(() => {
-              window.history.pushState(null, '', href);
-            }, 500); // Attendre la fin du défilement fluide
+            // Mettre à jour l'URL après le défilement (uniquement si sur la page d'accueil)
+            if (window.location.pathname === '/') {
+              setTimeout(() => {
+                window.history.pushState(null, '', href);
+              }, 500); // Attendre la fin du défilement fluide
+            }
           }
         }
       }

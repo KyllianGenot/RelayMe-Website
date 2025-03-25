@@ -1,13 +1,14 @@
 import { Twitter, Linkedin, Instagram } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Importer Link
 
 interface FooterProps {
   id?: string;
 }
 
-export default function Footer({ }: FooterProps) {
+export default function Footer({}: FooterProps) {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       const year = new Date().getFullYear();
@@ -15,7 +16,7 @@ export default function Footer({ }: FooterProps) {
         setCurrentYear(year);
       }
     }, 1000 * 60 * 60); // Vérification chaque heure
-    
+
     return () => clearInterval(intervalId);
   }, [currentYear]);
 
@@ -33,20 +34,20 @@ export default function Footer({ }: FooterProps) {
               © {currentYear} RelayMe - Tous droits réservés
             </span>
           </div>
-          
+
           {/* Bloc Liens */}
           <div className="flex gap-8">
             {['Politique de confidentialité', 'Support'].map((item) => (
-              <a
+              <Link
                 key={item}
-                href="#"
+                to={item === 'Politique de confidentialité' ? '/privacy-policy' : '/support'}
                 className="text-[#73777B] hover:text-[#3F8DF3] transition-colors duration-200 text-sm font-medium"
               >
                 {item}
-              </a>
+              </Link>
             ))}
           </div>
-          
+
           {/* Bloc Icônes sociales */}
           <div className="flex gap-4">
             {[Twitter, Linkedin, Instagram].map((Icon, index) => (
