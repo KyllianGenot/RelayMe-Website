@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div className="min-h-screen font-['Montserrat'] flex flex-col">
         <Header />
-        <ScrollHandler />
+        <ScrollHandler /> {/* S'applique à toutes les routes */}
         <main>
           <Routes>
             <Route

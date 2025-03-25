@@ -12,19 +12,24 @@ const Support = () => {
       <main className="pt-20 pb-12"> {/* Ajustement pour le header fixe */}
         <div className="max-w-4xl mx-auto px-4 py-12">
           <h1 className="text-3xl font-bold gradient-text mb-6">Support</h1>
-          <p className="text-[#73777B] mb-4">
-            Besoin d'aide avec RelayMe ? Consultez notre FAQ ou contactez notre équipe de support.
+          <p className="text-gray-200 mb-4">
+            Besoin d’aide avec RelayMe ? Vous pouvez nous contacter directement via notre formulaire de support ou consulter les ressources disponibles.
           </p>
-          <h2 className="text-2xl font-semibold mt-6 mb-4">FAQ</h2>
-          <ul className="text-[#73777B] list-disc pl-6 mb-4">
-            <li>Comment ajouter un contact ?</li>
-            <li>Que faire si je ne reçois pas d'autorisation ?</li>
-          </ul>
           <h2 className="text-2xl font-semibold mt-6 mb-4">Contactez-nous</h2>
-          <p className="text-[#73777B] mb-4">
-            Envoyez-nous un email à <a href="mailto:support@relayme.com" className="text-[#3F8DF3]">support@relayme.com</a>.
+          <p className="text-gray-200 mb-4">
+            Pour toute question ou assistance, veuillez utiliser notre formulaire de support :{' '}
+            <a href="https://tally.so/r/waz2O2" className="text-blue-500 underline">
+              https://tally.so/r/waz2O2
+            </a>.
           </p>
-          <a href="/" className="button-secondary mt-8 inline-block">Retour à l'accueil</a>
+          <h2 className="text-2xl font-semibold mt-6 mb-4">Ressources supplémentaires</h2>
+          <p className="text-gray-200 mb-4">
+            Si vous avez des préoccupations concernant vos données, vous pouvez consulter le site de la CNIL :{' '}
+            <a href="https://www.cnil.fr" className="text-blue-500 underline">
+              https://www.cnil.fr
+            </a>.
+          </p>
+          <a href="/" className="button-secondary mt-8 inline-block">Retour à l’accueil</a>
         </div>
       </main>
     </div>

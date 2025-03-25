@@ -1,6 +1,15 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const ScrollHandler = () => {
+  const location = useLocation(); // Récupère l'emplacement actuel (route)
+
+  // Gestion du scroll au changement de route
+  useEffect(() => {
+    window.scrollTo(0, 0); // Remet le scroll tout en haut à chaque changement de page
+  }, [location.pathname]); // Déclenché quand le chemin change
+
+  // Gestion des clics sur les ancres
   useEffect(() => {
     const handleAnchorClick = (e: Event) => {
       const anchor = e.target as HTMLAnchorElement;
