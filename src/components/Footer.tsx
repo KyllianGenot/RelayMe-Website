@@ -1,6 +1,6 @@
-import { Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Linkedin, ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Importer Link
+import { Link } from 'react-router-dom';
 
 interface FooterProps {
   id?: string;
@@ -15,28 +15,33 @@ export default function Footer({}: FooterProps) {
       if (year !== currentYear) {
         setCurrentYear(year);
       }
-    }, 1000 * 60 * 60); // Vérification chaque heure
+    }, 1000 * 60 * 60); // Vérification toutes les heures
 
     return () => clearInterval(intervalId);
   }, [currentYear]);
 
   return (
-    <footer className="py-8 bg-[#000812]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Bloc Logo et Copyright */}
+    <footer className="py-6 bg-[#000812] text-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-center">
+          {/* Logo et Copyright (à gauche) */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <span className="text-xl font-bold mb-2">
-              <span className="text-[#3F8DF3]">R</span>
-              <span className="text-white">elayMe</span>
-            </span>
+            <div className="flex items-center mb-2">
+              <Link to="/">
+                <img 
+                  src="/logo.webp"
+                  alt="Logo RelayMe" 
+                  className="h-8 w-auto" // Même taille que dans le header
+                />
+              </Link>
+            </div>
             <span className="text-[#73777B] text-sm">
               © {currentYear} RelayMe - Tous droits réservés
             </span>
           </div>
 
-          {/* Bloc Liens */}
-          <div className="flex gap-8">
+          {/* Liens de navigation (au centre) */}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
             {['Politique de confidentialité', 'Support'].map((item) => (
               <Link
                 key={item}
@@ -48,18 +53,18 @@ export default function Footer({}: FooterProps) {
             ))}
           </div>
 
-          {/* Bloc Icônes sociales */}
-          <div className="flex gap-4">
-            {[Twitter, Linkedin, Instagram].map((Icon, index) => (
-              <a
-                key={index}
-                href="#"
-                className="social-icon"
-                aria-label={`Suivez-nous sur ${Icon.name}`}
-              >
-                <Icon size={24} />
-              </a>
-            ))}
+          {/* Lien LinkedIn (à droite) */}
+          <div className="flex justify-center md:justify-end items-center">
+            <a
+              href="https://www.linkedin.com/company/relayme"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-[#73777B] hover:text-[#3F8DF3] transition-colors duration-200"
+            >
+              <Linkedin size={20} />
+              <span className="text-sm font-medium">LinkedIn</span>
+              <ExternalLink size={14} />
+            </a>
           </div>
         </div>
       </div>

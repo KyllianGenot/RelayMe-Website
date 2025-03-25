@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Download, Menu, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../assets/images/logo.webp';
 
 export default function EnTete() {
   const [estVisible, setEstVisible] = useState(true);
@@ -73,7 +72,7 @@ export default function EnTete() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <img 
-                src={Logo} 
+                src="/logo.webp"
                 alt="Logo" 
                 className="h-8 w-auto"
               />
